@@ -1,23 +1,32 @@
 {
   "name": "password",
   "version": "1.0.0",
+  "private": true,
   "description": "Manage your password",
   "keywords": [
     "typescript"
   ],
+  "homepage": "https://github.com/LeDDGroup/password-2#readme",
+  "bugs": {
+    "url": "https://github.com/LeDDGroup/password-2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeDDGroup/password-2.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "Daniel Perez Alvarez <danielpza@protonmail.com>",
   "files": [
     "dist"
   ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "webpack-dev-server --mode=development",
     "prebuild": "rm -rf dist",
     "build": "webpack --mode=production",
     "prepare": "npm run build",
     "release": "standard-version",
+    "start": "webpack-dev-server --mode=development",
     "test": "jest"
   },
   "husky": {
@@ -30,6 +39,7 @@
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
+  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
