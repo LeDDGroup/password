@@ -6,7 +6,12 @@ import { Data } from "./data";
 
 export class App extends Component<{}, { data: Data; password: string }> {
   state = {
-    data: { name: "", secure: "", version: "v2" as Data["version"] },
+    data: {
+      name: "",
+      secure: "",
+      version: "v2" as Data["version"],
+      amount: 14
+    },
     password: "-"
   };
   timeout: number | undefined = undefined;
@@ -32,9 +37,11 @@ export class App extends Component<{}, { data: Data; password: string }> {
   }
   generatePassword = () => {
     if (this.state.data.version === "v1") {
-      this.updatePassword(v1(this.state.data.secure, this.state.data.name, 14));
+      this.updatePassword(
+        v1(this.state.data.secure, this.state.data.name, this.state.data.amount)
+      );
     } else {
-      v2(this.state.data.secure, this.state.data.name, 14)
+      v2(this.state.data.secure, this.state.data.name, this.state.data.amount)
         .then(this.updatePassword)
         .catch(console.error);
     }

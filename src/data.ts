@@ -4,6 +4,7 @@ export type Data = {
   name: string;
   secure: string;
   version: "v1" | "v2";
+  amount: number;
 };
 
 export const options: UniformOptionProps<Data["version"]>[] = [
