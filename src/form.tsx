@@ -1,14 +1,19 @@
 import React from "react";
-import { UniformComponent, UniformInput } from "uniform-react-components";
+import {
+  UniformComponent,
+  UniformInput,
+  UniformSelect,
+  UniformOptionProps
+} from "uniform-react-components";
 import { extended, labeled } from "./hoc";
+import { Data, options } from "./data";
 
 const Input = labeled(UniformInput);
+const Select = labeled(UniformSelect as typeof UniformSelect);
 
-export class Form extends UniformComponent<{
-  name: string;
-  secure: string;
-}> {
+export class Form extends UniformComponent<Data> {
   render() {
+    console.log(this.props.value);
     return (
       <form>
         <Input
@@ -21,6 +26,12 @@ export class Form extends UniformComponent<{
           label="name"
           onChange={this.onChange.name}
           value={this.props.value.name}
+        />
+        <Select
+          label="version"
+          options={options}
+          onChange={this.onChange.version as any}
+          value={this.props.value.version}
         />
       </form>
     );

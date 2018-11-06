@@ -1,38 +1,15 @@
 import React, { Component } from "react";
 import Form from "./form";
+import v1 from "./core/v1";
 import v2 from "./core/v2";
+import { Data } from "./data";
 
-type Data = Form["props"]["value"];
 export class App extends Component<{}, { data: Data; password: string }> {
-  state = { data: { name: "", secure: "" }, password: "-" };
+  state = {
+    data: { name: "", secure: "", version: "v2" as Data["version"] },
+    password: "-"
+  };
   timeout: number | undefined = undefined;
-  onChange = (data: Data) => {
-    this.setState({
-      ...this.state,
-      data,
-      password: "generating..."
-    });
-    this.updatePasswordDelayed();
-  };
-  updatePassword = () => {
-    v2(this.state.data.secure, this.state.data.name, 14)
-      .then(password => {
-        this.setState({
-          ...this.state,
-          password
-        });
-      })
-      .catch(console.error);
-  };
-  clearTimeout() {
-    if (!this.timeout) return;
-    clearTimeout(this.timeout);
-    this.timeout = undefined;
-  }
-  updatePasswordDelayed() {
-    this.clearTimeout();
-    this.timeout = window.setTimeout(this.updatePassword, 1000);
-  }
   render() {
     return (
       <div>
@@ -40,6 +17,38 @@ export class App extends Component<{}, { data: Data; password: string }> {
         <p>{this.state.password}</p>
       </div>
     );
+  }
+  onChange = (data: Data) => {
+    this.setState({
+      ...this.state,
+      data,
+      password: "generating..."
+    });
+    this.generatePasswordDelayed();
+  };
+  generatePasswordDelayed() {
+    this.clearTimeout();
+    this.timeout = window.setTimeout(this.generatePassword, 1000);
+  }
+  generatePassword = () => {
+    if (this.state.data.version === "v1") {
+      this.updatePassword(v1(this.state.data.secure, this.state.data.name, 14));
+    } else {
+      v2(this.state.data.secure, this.state.data.name, 14)
+        .then(this.updatePassword)
+        .catch(console.error);
+    }
+  };
+  updatePassword = (password: string) => {
+    this.setState({
+      ...this.state,
+      password
+    });
+  };
+  clearTimeout() {
+    if (!this.timeout) return;
+    clearTimeout(this.timeout);
+    this.timeout = undefined;
   }
 }
 

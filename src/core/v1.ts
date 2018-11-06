@@ -29,3 +29,5 @@ function getSeed(str: string) {
   });
   return value;
 }
+
+export default generate;
