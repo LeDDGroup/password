@@ -15,7 +15,6 @@ const Select = labeled(UniformSelect as typeof UniformSelect);
 
 export class Form extends UniformComponent<Data> {
   render() {
-    console.log(this.props.value);
     return (
       <form>
         <Input

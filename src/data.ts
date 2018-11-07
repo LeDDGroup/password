@@ -1,11 +1,14 @@
 import { UniformOptionProps } from "uniform-react-components";
 
-export type Data = {
+export type PublicData = {
   name: string;
-  secure: string;
   version: "v1" | "v2";
   amount: number;
 };
+
+export type Data = {
+  secure: string;
+} & PublicData;
 
 export const options: UniformOptionProps<Data["version"]>[] = [
   { value: "v1", children: "V1" },
