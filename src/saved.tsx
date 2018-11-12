@@ -1,6 +1,6 @@
 import React from "react";
 import { extended, labeled } from "./hoc";
-import { Data, options, PublicData } from "./data";
+import { options, PublicData } from "./data";
 
 export class Saved extends React.Component<{
   onCopy: (data: PublicData) => void;

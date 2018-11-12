@@ -6,11 +6,7 @@ export type PublicData = {
   amount: number;
 };
 
-export type Data = {
-  secure: string;
-} & PublicData;
-
-export const options: UniformOptionProps<Data["version"]>[] = [
+export const options: UniformOptionProps<PublicData["version"]>[] = [
   { value: "v1", children: "V1" },
   { value: "v2", children: "V2" }
 ];

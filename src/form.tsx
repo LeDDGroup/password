@@ -7,22 +7,16 @@ import {
   UniformInputNumber
 } from "uniform-react-components";
 import { extended, labeled } from "./hoc";
-import { Data, options } from "./data";
+import { options, PublicData } from "./data";
 
 const Input = labeled(UniformInput);
 const InputNumber = labeled(UniformInputNumber);
 const Select = labeled(UniformSelect as typeof UniformSelect);
 
-export class Form extends UniformComponent<Data> {
+export class Form extends UniformComponent<PublicData> {
   render() {
     return (
       <form>
-        <Input
-          label="secure"
-          type="password"
-          onChange={this.onChange.secure}
-          value={this.props.value.secure}
-        />
         <Input
           label="name"
           onChange={this.onChange.name}
