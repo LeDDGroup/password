@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - stable
+  - "6"
+  - "4"
+env:
+  global:
+    secure: mPboFM2mQsP8RhcMYAA9YYmdjerZSwsgTtzo0EPPX7BVdxmSMVz12Du3EuVLBMkFaA7lB/3BAhtNjh9LFPIQTdfSNTsLNdCTkxpGxxHH6fAqVmz71DXPeSQIqRB/cUycPzIhKDQVbuJtvJRZf5bSiS5NDACiUTa08wsNk86kWmJWrjYexl2Ol8cZnEZQ6j8dOG49kFSfl5o9IQ6OpTk96CI+qDmYlUB1bsOXxwE7ND1Kr09uJUcytGLEpu6OmbWT9kE1TFeTCO0VBzaH6CtTyzLIsaDHHOBJjspDVCdbOSnfJ7YrAop06dTtwXXtnO8I06cC61tCv/5RmfOIC0fPG67nu0HdbIvl/QW1UNK4rcj8Nd3cT+LXkmFCkvqH5m8OcwA6schbo3Gf3Dmw/qmepJZAFl/9ZInABbOhbqCenIrnFh+BsIBpWd/UVEgER3JS89dDm0FpfXnYLqENnRD4nAoVRb+L0onH36vCZZPGRENbPMbcaXupfp2uGWS8WVp/0QOo3JAUmPwPok+YWTUlN4cJMTiStZpKIlWvViFBa23d8Mzv87j3MukJ8GHy3EQxE2dSM3kWz8G8f51ErMHPT8Zexa7CjbARtXyRic2CPclLM7A99XkUj117D6KjXRYyb20PcKkTxxbHApTsPjkFaGwyT6UnWFumn5KZpZufIws=
+deploy:
+  provider: pages
+  local-dir: dist
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
