@@ -6,13 +6,13 @@
   "keywords": [
     "typescript"
   ],
-  "homepage": "https://github.com/LeDDGroup/password-2#readme",
+  "homepage": "https://github.com/LeDDGroup/password#readme",
   "bugs": {
-    "url": "https://github.com/LeDDGroup/password-2/issues"
+    "url": "https://github.com/LeDDGroup/password/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LeDDGroup/password-2.git"
+    "url": "git+https://github.com/LeDDGroup/password.git"
   },
   "license": "MIT",
   "author": "Daniel Perez Alvarez <danielpza@protonmail.com>",
