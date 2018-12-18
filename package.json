@@ -23,10 +23,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "webpack --mode=production",
+    "build": "webpack --env.NODE_ENV=production",
     "prepare": "npm run build",
     "release": "standard-version",
-    "start": "webpack-dev-server --mode=development",
+    "start": "webpack-dev-server --env.NODE_ENV=development",
     "test": "jest"
   },
   "husky": {
@@ -53,6 +53,7 @@
     "@types/webpack": "^4.4.17",
     "bcryptjs": "^2.4.3",
     "crypto-js": "^3.1.9-1",
+    "html-webpack-include-assets-plugin": "^1.0.6",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
