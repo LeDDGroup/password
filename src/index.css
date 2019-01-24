@@ -5,3 +5,13 @@
 .flexed {
   display: flex;
 }
+
+label {
+    font-size: 1.7rem;
+}
+
+select,
+option,
+input {
+    font-size: 1.7rem;
+}
