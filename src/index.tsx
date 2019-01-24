@@ -14,26 +14,44 @@ import { copy } from "./clipboard";
   const generateRef: JSX.Reference<"input"> = {};
   const amountRef: JSX.Reference<"input"> = {};
   const versionRef: JSX.Reference<"select"> = {};
+  const copyInputRef: JSX.Reference<"input"> = {};
   const copyInput = (
     <div className="flexed">
       <input
         onclick={handle(async () => copy(resultRef.value!.value))}
+        ref={copyInputRef}
         type="button"
         value="Copy"
       />
-      <input ref={resultRef} type="text" placeholder="result" />
+      <input ref={resultRef} type="password" placeholder="result" />
     </div>
   );
   const container = (
     <div className="container small-container">
       <label>Master Password</label>
-      <input ref={passwordRef} type="password" placeholder="master password" />
+      <input
+        ref={passwordRef}
+        type="password"
+        onkeydown={onKeydown}
+        placeholder="master password"
+      />
       <label>Site</label>
-      <input ref={siteRef} type="text" placeholder="site" />
+      <input
+        ref={siteRef}
+        type="text"
+        onkeydown={onKeydown}
+        placeholder="site"
+      />
       <label>Amount</label>
-      <input ref={amountRef} type="number" placeholder="amount" value="14" />
+      <input
+        ref={amountRef}
+        type="number"
+        onkeydown={onKeydown}
+        placeholder="amount"
+        value="14"
+      />
       <label>Version</label>
-      <select ref={versionRef}>
+      <select onkeydown={onKeydown} ref={versionRef}>
         <option value="v1">v1</option>
         <option value="v2" selected>
           v2
@@ -48,12 +66,12 @@ import { copy } from "./clipboard";
     </div>
   );
   app.appendChild(container);
-  document.addEventListener("keydown", ev => {
+  function onKeydown(ev: KeyboardEvent) {
     if (ev.keyCode === 13) {
       generateRef.value!.focus();
       generateRef.value!.click();
     }
-  });
+  }
   async function generate() {
     const pass =
       versionRef.value!.value === "v2"
@@ -71,7 +89,7 @@ import { copy } from "./clipboard";
     if (copyInput.parentElement === null) {
       container.appendChild(copyInput);
     }
-    resultRef.value!.select();
+    copyInputRef.value!.focus();
   }
   function handle(fn: (...args: any[]) => Promise<any>) {
     return () =>
