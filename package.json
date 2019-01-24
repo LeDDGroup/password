@@ -18,8 +18,8 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "webpack --mode=production",
-    "dev": "NODE_ENV=development webpack-dev-server --mode=development --open",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "npm run build",
+    "dev": "NODE_ENV=development webpack-dev-server --mode=development --open"
   },
   "dependencies": {},
   "devDependencies": {
