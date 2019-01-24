@@ -9,7 +9,7 @@
     "jsxFactory": "createElement",
     // "declaration": true,
     // "declarationMap": true,
-    // "sourceMap": true,
+    "sourceMap": true,
     // "outFile": "./",
     // "outDir": "./",
     // "rootDir": "./",
