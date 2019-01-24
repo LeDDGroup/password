@@ -14,18 +14,27 @@ import { copy } from "./clipboard";
   const generateRef: JSX.Reference<"input"> = {};
   const amountRef: JSX.Reference<"input"> = {};
   const versionRef: JSX.Reference<"select"> = {};
-  const copyInputRef: JSX.Reference<"input"> = {};
+  const copyInputRef: JSX.Reference<"button"> = {};
   const copyInput = (
     <div className="flexed">
-      <input
+      <button
         onclick={handle(async () => copy(resultRef.value!.value))}
         ref={copyInputRef}
-        type="button"
-        value="Copy"
-      />
+      >
+        <i className="fas fa-clipboard" />
+      </button>
       <input ref={resultRef} type="password" placeholder="result" />
+      <button onmousedown={reveal} onmouseup={hide} onmouseleave={hide}>
+        <i className="fas fa-eye" />
+      </button>
     </div>
   );
+  function reveal() {
+    resultRef.value!.type = "text";
+  }
+  function hide() {
+    resultRef.value!.type = "password";
+  }
   const container = (
     <div className="container small-container">
       <label>Master Password</label>
